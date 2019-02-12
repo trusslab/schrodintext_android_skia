@@ -76,6 +76,8 @@ public:
         trigger that.
     */
     const void* findImage(const SkGlyph&);
+    
+    void cleanImage(const SkGlyph&);
 
     /** If the advance axis intersects the glyph's path, append the positions scaled and offset
         to the array (if non-null), and set the count to the updated array length.

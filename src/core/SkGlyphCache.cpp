@@ -215,6 +215,14 @@ const void* SkGlyphCache::findImage(const SkGlyph& glyph) {
     return glyph.fImage;
 }
 
+void SkGlyphCache::cleanImage(const SkGlyph& glyph) {
+    size_t  size = glyph.computeImageSize();
+    if (glyph.fImage) {
+        fGlyphAlloc.unalloc(glyph.fImage);
+        fMemoryUsed -= size;
+    }
+}
+
 const SkPath* SkGlyphCache::findPath(const SkGlyph& glyph) {
     if (glyph.fWidth) {
         if (glyph.fPathData == nullptr) {
